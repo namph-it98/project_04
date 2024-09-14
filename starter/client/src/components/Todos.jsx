@@ -127,18 +127,14 @@ export function Todos() {
   useEffect(() => {
     async function foo() {
       try {
-        console.log(0)
         const accessToken = await getAccessTokenSilently({
           audience: `https://dev-15cho4t032gcqgu3.us.auth0.com/api/v2/`,
           scope: 'read:todos'
         })
-        console.log(1)
         console.log('Access token: ' + accessToken)
         const todos = await getTodos(accessToken)
-        console.log(2)
         setTodos(todos)
         setLoadingTodos(false)
-        console.log(3)
       } catch (e) {
         alert(`Failed to fetch todos: ${e}`)
       }
